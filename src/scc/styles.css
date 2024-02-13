@@ -66,6 +66,10 @@ a {
     cursor: pointer;
 }
 
+:hover.button-start-date {
+    background-color: #6C8CFF;
+}
+
 .timer {
     display: flex;
     justify-content: center;

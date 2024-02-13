@@ -35,21 +35,22 @@ const options = {
       btnStart.disabled = false;
       btnStart.classList.add('button-start-date');
     }  
+    
   },
 };
 
 flatpickr(input, options);
 
-function tick({days, hours, minutes, seconds}) {
+function addLeadingZero(value) {
+  return value.toString().padStart(2, '0');
+}
+
+function tick({ days, hours, minutes, seconds }) {
   day.textContent = `${addLeadingZero(days)}`
   hour.textContent = `${addLeadingZero(hours)}`;
   minute.textContent = `${addLeadingZero(minutes)}`;
   second.textContent = `${addLeadingZero(seconds)}`;
 };
-
-function addLeadingZero(value) {
-  return value.toString().padStart(2, '0');
-}
 
 function convertMs(ms) {
   const second = 1000;
@@ -70,10 +71,11 @@ function onBtnClick() {
     differenceTime -= 1000;
     const timeObj = convertMs(differenceTime);
     tick(timeObj);
-
+    
     if (differenceTime <= 1000) {
       clearInterval(intervalId);
     }
+
   }, 1000);
 }
 
