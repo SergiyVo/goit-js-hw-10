@@ -66,6 +66,10 @@ function convertMs(ms) {
 }
 
 function onBtnClick() {
+  btnStart.disabled = true;
+  btnStart.classList.remove('button-start-date');
+  input.disabled = true;
+
   let differenceTime = userSelectedDate - Date.now();
   const intervalId = setInterval(() => { 
     differenceTime -= 1000;
@@ -74,6 +78,7 @@ function onBtnClick() {
     
     if (differenceTime <= 1000) {
       clearInterval(intervalId);
+      input.disabled = false;
     }
 
   }, 1000);
